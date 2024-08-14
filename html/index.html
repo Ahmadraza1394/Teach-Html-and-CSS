@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmad Raza - Software Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        text-align: center;
+        padding: 3rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://source.unsplash.com/random/1600x900/?technology")
+          no-repeat center center;
+        background-size: cover;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      header > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 3rem;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      h2 {
+        margin: 0.5rem 0 0;
+        font-size: 1.8rem;
+        font-weight: 300;
+      }
+
+      main {
+        max-width: 1000px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      #skills ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #skills li {
+        background-color: #3498db;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      #skills li:hover {
+        background-color: #2ecc71;
+        transform: scale(1.05);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .project {
+        background-color: #f8f9fa;
+        border-left: 4px solid #3498db;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .project:hover {
+        background-color: #e9ecef;
+        transform: translateX(5px);
+      }
+
+      .project h3 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+
+      #contact p {
+        margin: 0.5rem 0;
+      }
+
+      #contact i {
+        margin-right: 10px;
+        color: #3498db;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        font-size: 0.9rem;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #ecf0f1;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 1rem;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        header {
+          padding: 2rem 0;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="#html-tutorial">Learn HTML</a></li>
+        <li><a href="css_tutorial.html">Learn CSS</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <style>
+      .navbar {
+        background-color: #3498db;
+        /* padding: 1rem; */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-list {
+        list-style-type: none;
+        padding: 2rem;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-list li {
+        margin: 0 1rem;
+      }
+
+      .nav-list a {
+        color: #ecf0f1;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-list a:hover {
+        color: whitesmoke;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        height: 5px;
+        width: 25px;
+        background-color: rgba(0, 0, 0, 0.808);
+        margin: 3px 0;
+        transition: 0.4s;
+      }
+
+      @media (max-width: 768px) {
+        .nav-list {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-list.show {
+          display: flex;
+        }
+
+        .nav-list li {
+          margin: 0.5rem 0;
+        }
+
+        .hamburger {
+          display: flex;
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const hamburger = document.querySelector(".hamburger");
+        const navList = document.querySelector(".nav-list");
+        hamburger.addEventListener("click", () => {
+          navList.classList.toggle("show");
+        });
+      });
+    </script>
+
+    <header>
+      <h1>Ahmad Raza</h1>
+      <h2>Software Engineer</h2>
+      <img src="IMG_2676.jpg" alt="Ahmad Raza" class="profile-image" />
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>About Me</h2>
+        <p>
+          I am a passionate software engineer with expertise in web development.
+          With a strong foundation in creating robust and user-friendly web
+          applications, I strive to deliver high-quality solutions that meet
+          client needs and exceed expectations.
+        </p>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>React.js</li>
+          <li>Node.js</li>
+          <li>SQL</li>
+          <li>Git</li>
+          <li>RESTful APIs</li>
+          <li>Responsive Design</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+          <h3>E-commerce Website</h3>
+          <p>
+            Developed a fully functional e-commerce platform using MERN stack,
+            featuring user authentication, product management, and secure
+            payment integration.
+          </p>
+        </div>
+        <div class="project">
+          <h3>Portfolio Website</h3>
+          <p>
+            Created a responsive portfolio website using HTML, CSS, and
+            JavaScript, showcasing my projects and skills with a modern,
+            intuitive design.
+          </p>
+        </div>
+        <div class="project">
+          <h3>Task Management App</h3>
+          <p>
+            Built a full-stack task management application with React and
+            Node.js, implementing features like task creation, assignment, and
+            progress tracking.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <section id="html-tutorial">
+      <h2
+        style="
+          font-size: xx-large;
+          text-align: center;
+          color: #3498db;
+          font-weight: 700;
+        "
+      >
+        HTML Tutorial
+      </h2>
+      <p>
+        Welcome to our HTML tutorial! Here, you'll learn about different HTML
+        tags and their usage with examples.
+      </p>
+      <div class="html-concept">
+        <h3>&lt;!DOCTYPE html&gt; - Document Type Declaration</h3>
+        <p>
+          The DOCTYPE declaration is the first line of an HTML document,
+          specifying the HTML version being used.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+        <p>This declares that the document is using HTML5.</p>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;html&gt; - HTML Root Element</h3>
+        <p>
+          The html tag is the root element of an HTML page, containing all other
+          elements.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;html lang="en"&gt;
+  &lt;!-- Other HTML content goes here --&gt;
+&lt;/html&gt;</code></pre>
+        <p>The lang attribute specifies the language of the document.</p>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;head&gt; - Document Metadata</h3>
+        <p>
+          The head tag contains metadata about the HTML document, such as title,
+          character encoding, and linked resources.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;head&gt;
+  &lt;title&gt;My Web Page&lt;/title&gt;
+  &lt;!-- Other metadata goes here --&gt;
+&lt;/head&gt;</code></pre>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;meta&gt; - Metadata Tags</h3>
+        <p>
+          Meta tags provide additional information about the document, often
+          used for SEO and proper rendering.
+        </p>
+        <h4>Examples:</h4>
+        <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="A brief description of the page content"&gt;</code></pre>
+        <p>
+          These meta tags set the character encoding, adjust viewport for
+          responsive design, and provide a page description, respectively.
+        </p>
+      </div>
+      <div class="html-concept">
+        <h3>&lt;body&gt; - Document Body</h3>
+        <p>
+          The body tag contains the visible content of an HTML document,
+          including text, images, and other elements that are displayed in the
+          browser.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;body&gt;
+  &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+  &lt;p&gt;This is the main content of the page.&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+        <p>
+          Everything inside the body tag is what you see on the webpage. It's
+          where you put all the content that you want to show to your visitors.
+        </p>
+      </div>
+      <div class="html-concept">
+        <h3>&lt;h1&gt; to &lt;h6&gt; - Heading Tags</h3>
+        <p>
+          Heading tags are used to define different levels of headings in HTML,
+          with h1 being the highest level and h6 the lowest.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Smaller Subheading&lt;/h3&gt;</code></pre>
+        <p>Output:</p>
+        <h1 style="color: black; font-size: 30px">Main Heading</h1>
+        <h2 style="color: black; font-size: 29px; font-weight: bold">
+          Subheading
+        </h2>
+        <h3 style="color: black; font-size: 20px">Smaller Subheading</h3>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;div&gt; - Division Tag</h3>
+        <p>
+          The div tag is a container used to group other HTML elements for
+          styling purposes.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;div class="container"&gt;
+  &lt;p&gt;This is inside a div.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;span&gt; - Inline Container Tag</h3>
+        <p>
+          The span tag is an inline container used to mark up a part of a text,
+          or a part of a document.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;p&gt;This is &lt;span style="color: red;"&gt;red&lt;/span&gt; text.&lt;/p&gt;</code></pre>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;p&gt; - Paragraph Tag</h3>
+        <p>The paragraph tag is used to define a paragraph of text.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;p&gt;This is a paragraph of text.&lt;/p&gt;</code></pre>
+        <p>Result:</p>
+        <p class="example">This is a paragraph of text.</p>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;a&gt; - Anchor Tag</h3>
+        <p>
+          The anchor tag is used to create hyperlinks to other web pages or
+          resources.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;a href="https://www.example.com"&gt;Visit Example.com&lt;/a&gt;</code></pre>
+        <p>Result:</p>
+        <p class="example">
+          <a href="https://www.example.com">Visit Example.com</a>
+        </p>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;img&gt; - Image Tag</h3>
+        <p>The image tag is used to embed images in your HTML document.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;img src="image.jpg" alt="Description of the image"&gt;</code></pre>
+        <p>
+          Result: (Replace 'image.jpg' with an actual image URL to see the
+          result)
+        </p>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;ul&gt; and &lt;li&gt; - Unordered List and List Item Tags</h3>
+        <p>These tags are used to create bulleted lists.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+  &lt;/ul&gt;</code></pre>
+        <p>Result:</p>
+        <ul class="example">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </div>
+
+      <p>
+        These are just a few examples of HTML tags. Continue exploring to learn
+        more about HTML and web development!
+      </p>
+
+      <div class="html-concept">
+        <h3>
+          &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, and &lt;td&gt; - Table Tags
+        </h3>
+        <p>These tags are used to create tables in HTML.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Header 1&lt;/th&gt;
+    &lt;th&gt;Header 2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Row 1, Cell 1&lt;/td&gt;
+    &lt;td&gt;Row 1, Cell 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <table border="1">
+            <tr>
+              <th>Header 1</th>
+              <th>Header 2</th>
+            </tr>
+            <tr>
+              <td>Row 1, Cell 1</td>
+              <td>Row 1, Cell 2</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;div&gt; - Division Tag</h3>
+        <p>
+          The div tag is used as a container for other HTML elements and for
+          styling purposes.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;div style="background-color: #f0f0f0; padding: 10px;"&gt;
+  &lt;h4&gt;This is a heading inside a div&lt;/h4&gt;
+  &lt;p&gt;This is a paragraph inside the same div.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <div style="background-color: #f0f0f0; padding: 10px">
+            <h4>This is a heading inside a div</h4>
+            <p>This is a paragraph inside the same div.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;span&gt; - Inline Container Tag</h3>
+        <p>
+          The span tag is an inline container used to mark up a part of a text,
+          or a part of a document.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>This is &lt;span style="color: red; font-weight: bold;"&gt;important&lt;/span&gt; text.</code></pre>
+        <p>Result:</p>
+        <p class="example">
+          This is
+          <span style="color: red; font-weight: bold">important</span> text.
+        </p>
+      </div>
+      <div class="html-concept">
+        <h3>&lt;form&gt; - Form Tag</h3>
+        <p>The form tag is used to create an HTML form for user input.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;form action="/submit-form" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <form action="/submit-form" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;input&gt; - Input Tag</h3>
+        <p>
+          The input tag is used to create interactive controls for web-based
+          forms.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;input type="text" placeholder="Enter your name"&gt;
+&lt;input type="checkbox" id="agree" name="agree"&gt;
+&lt;label for="agree"&gt;I agree to the terms&lt;/label&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <input type="text" placeholder="Enter your name" />
+          <br /><br />
+          <input type="checkbox" id="agree" name="agree" />
+          <label for="agree">I agree to the terms</label>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;textarea&gt; - Textarea Tag</h3>
+        <p>The textarea tag defines a multi-line text input control.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;textarea rows="4" cols="50" placeholder="Enter your message here"&gt;&lt;/textarea&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <textarea
+            rows="4"
+            cols="35"
+            placeholder="Enter your message here"
+          ></textarea>
+        </div>
+      </div>
+      <div class="html-concept">
+        <h3>&lt;select&gt; and &lt;option&gt; - Dropdown List Tags</h3>
+        <p>These tags are used to create dropdown lists in HTML forms.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;select name="color"&gt;
+  &lt;option value="red"&gt;Red&lt;/option&gt;
+  &lt;option value="green"&gt;Green&lt;/option&gt;
+  &lt;option value="blue"&gt;Blue&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <select name="color">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;button&gt; - Button Tag</h3>
+        <p>The button tag defines a clickable button.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;button type="button"&gt;Click me!&lt;/button&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <button type="button">Click me!</button>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;fieldset&gt; and &lt;legend&gt; - Fieldset and Legend Tags</h3>
+        <p>
+          These tags are used to group related form elements and provide a
+          caption for the group.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Personal Information&lt;/legend&gt;
+  &lt;label for="fname"&gt;First name:&lt;/label&gt;
+  &lt;input type="text" id="fname" name="fname"&gt;
+  &lt;label for="lname"&gt;Last name:&lt;/label&gt;
+  &lt;input type="text" id="lname" name="lname"&gt;
+&lt;/fieldset&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname" />
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname" />
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;label&gt; - Label Tag</h3>
+        <p>The label tag defines a label for several form elements.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;label for="username"&gt;Username:&lt;/label&gt;
+&lt;input type="text" id="username" name="username"&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" />
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;input type="radio"&gt; - Radio Button Input</h3>
+        <p>
+          Radio buttons let a user select one of a limited number of choices.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;input type="radio" id="html" name="fav_language" value="HTML"&gt;
+&lt;label for="html"&gt;HTML&lt;/label&gt;&lt;br&gt;
+&lt;input type="radio" id="css" name="fav_language" value="CSS"&gt;
+&lt;label for="css"&gt;CSS&lt;/label&gt;&lt;br&gt;
+&lt;input type="radio" id="javascript" name="fav_language" value="JavaScript"&gt;
+&lt;label for="javascript"&gt;JavaScript&lt;/label&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <input type="radio" id="html" name="fav_language" value="HTML" />
+          <label for="html">HTML</label><br />
+          <input type="radio" id="css" name="fav_language" value="CSS" />
+          <label for="css">CSS</label><br />
+          <input
+            type="radio"
+            id="javascript"
+            name="fav_language"
+            value="JavaScript"
+          />
+          <label for="javascript">JavaScript</label>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;input type="checkbox"&gt; - Checkbox Input</h3>
+        <p>
+          Checkboxes let a user select zero or more options of a limited number
+          of choices.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"&gt;
+&lt;label for="vehicle1"&gt; I have a bike&lt;/label&gt;&lt;br&gt;
+&lt;input type="checkbox" id="vehicle2" name="vehicle2" value="Car"&gt;
+&lt;label for="vehicle2"&gt; I have a car&lt;/label&gt;&lt;br&gt;
+&lt;input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"&gt;
+&lt;label for="vehicle3"&gt; I have a boat&lt;/label&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+          <label for="vehicle1"> I have a bike</label><br />
+          <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+          <label for="vehicle2"> I have a car</label><br />
+          <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
+          <label for="vehicle3"> I have a boat</label>
+        </div>
+      </div>
+      <div class="html-concept">
+        <h3>&lt;select&gt; and &lt;option&gt; - Dropdown List</h3>
+        <p>
+          The select element creates a drop-down list, and the option elements
+          define the available options in the list.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;select name="cars" id="cars"&gt;
+  &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
+  &lt;option value="saab"&gt;Saab&lt;/option&gt;
+  &lt;option value="mercedes"&gt;Mercedes&lt;/option&gt;
+  &lt;option value="audi"&gt;Audi&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;button&gt; - Clickable Button</h3>
+        <p>The button element defines a clickable button.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;button type="button"&gt;Click Me!&lt;/button&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <button type="button">Click Me!</button>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;iframe&gt; - Inline Frame</h3>
+        <p>
+          The iframe element is used to embed another document within the
+          current HTML document.
+        </p>
+        <h4>Example:</h4>
+        <pre><code>&lt;iframe src="https://www.example.com" width="300" height="200"&gt;&lt;/iframe&gt;</code></pre>
+        <p>Result:</p>
+        <div class="example">
+          <iframe
+            src="https://www.example.com"
+            width="300"
+            height="200"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;audio&gt; - Audio Playback</h3>
+        <p>The audio element is used to embed sound content in documents.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;audio controls&gt;
+  &lt;source src="horse.ogg" type="audio/ogg"&gt;
+  &lt;source src="horse.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+        <!-- <p>
+          Result: (Audio player would appear here if audio files were provided)
+        </p> -->
+        <audio src="mixkit-confirmation-tone-2867.wav" controls></audio>
+      </div>
+
+      <div class="html-concept">
+        <h3>&lt;video&gt; - Video Playback</h3>
+        <p>The video element is used to embed video content in documents.</p>
+        <h4>Example:</h4>
+        <pre><code>&lt;video width="320" height="240" controls&gt;
+  &lt;source src="nature.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.ogg" type="video/ogg"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</code></pre>
+        <!-- <p>
+          Result: (Video player would appear here if video files were provided)
+        </p> -->
+        <video src="nature.mp4" controls width="320" height="240"></video>
+      </div>
+    </section>
+
+    <style>
+      #html-tutorial {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      #html-tutorial h2 {
+        color: #007bff;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.5rem;
+      }
+
+      .html-concept {
+        background-color: white;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .html-concept h3 {
+        color: #28a745;
+      }
+
+      .html-concept h4 {
+        color: #6c757d;
+      }
+
+      pre {
+        background-color: #f1f3f5;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      code {
+        color: #e83e8c;
+      }
+
+      .example {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 0.5rem;
+      }
+
+      .html-concept a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .html-concept a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><i class="fas fa-envelope"></i>Email: ahmadraza13941394@gmail.com</p>
+      <p>
+        <i class="fab fa-linkedin"></i>LinkedIn:
+        https://www.linkedin.com/in/ahmad-raza-b77408222/
+      </p>
+      <p>
+        <i class="fab fa-github"></i>GitHub: https://github.com/Ahmadraza1394/
+      </p>
+    </section>
+    <footer>
+      <p>&copy; 2023 Ahmad Raza. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

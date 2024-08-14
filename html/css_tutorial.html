@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div class="dropdown">
+      <button class="dropbtn">Select Topics</button>
+      <div class="dropdown-content">
+        <a href="#using-css">Using CSS in HTML</a>
+        <a href="#selectors">CSS Selectors</a>
+        <a href="#box-model">Box Model</a>
+        <a href="#flexbox">Flexbox</a>
+        <a href="#position">Position</a>
+        <a href="#float">Float</a>
+        <a href="#lists">Lists</a>
+        <a href="#grid">CSS Grid</a>
+        <a href="#media-queries">Media Queries</a>
+        <a href="#animations">Animations</a>
+        <!-- Add more topics as needed -->
+      </div>
+    </div>
+    <header>
+      <h1>CSS Tutorial</h1>
+      <p>
+        Welcome to our CSS tutorial! Here, you'll learn about different CSS
+        concepts with examples.
+      </p>
+    </header>
+    <button id="back-to-top" title="Go to top">↑</button>
+
+    <style>
+      #back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+        padding: 20px;
+        border-radius: 50%;
+        font-size: 32px;
+        font-weight: bolder;
+        transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      #back-to-top:hover {
+        background-color: #2980b9;
+      }
+
+      @media screen and (max-width: 768px) {
+        #back-to-top {
+          padding: 14px;
+          font-size: 24px;
+          bottom: 15px;
+          right: 15px;
+        }
+      }
+    </style>
+
+    <script>
+      // Back to top button functionality
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          backToTopButton.style.display = "block";
+          backToTopButton.style.opacity = "1";
+          backToTopButton.style.visibility = "visible";
+        } else {
+          backToTopButton.style.opacity = "0";
+          backToTopButton.style.visibility = "hidden";
+        }
+      };
+
+      backToTopButton.onclick = function () {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      };
+    </script>
+
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropbtn {
+        background-color: #2ecc71;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: #2980b9;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".dropdown-content a");
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+      });
+    </script>
+
+    <main>
+      <!-- HOW TO USE CSS IN HTML -->
+      <section class="css-concept" id="using-css">
+        <h2>Using CSS in HTML</h2>
+        <p>
+          There are three main methods to incorporate CSS into an HTML file:
+        </p>
+        <ol>
+          <li>Inline CSS</li>
+          <li>Internal CSS</li>
+          <li>External CSS</li>
+        </ol>
+
+        <h3>1. Inline CSS</h3>
+        <p>
+          Inline CSS is applied directly to individual HTML elements using the
+          <code>style</code> attribute.
+        </p>
+        <div class="example">
+          <h4>Example:</h4>
+          <pre><code class="language-html">
+&lt;p style="color: blue; font-size: 16px;"&gt;This is a blue paragraph with 16px font size.&lt;/p&gt;
+          </code></pre>
+        </div>
+
+        <h3>2. Internal CSS</h3>
+        <p>
+          Internal CSS is defined within the <code>&lt;style&gt;</code> tag in
+          the HTML file's <code>&lt;head&gt;</code> section.
+        </p>
+        <div class="example">
+          <h4>Example:</h4>
+          <pre><code class="language-html">
+&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: green;
+      font-size: 18px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+          </code></pre>
+        </div>
+
+        <h3>3. External CSS</h3>
+        <p>
+          External CSS involves creating a separate CSS file and linking it to
+          the HTML file using the <code>&lt;link&gt;</code> tag.
+        </p>
+        <div class="example">
+          <h4>Example:</h4>
+          <p>In your HTML file:</p>
+          <pre><code class="language-html">
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+          </code></pre>
+          <p>In your <code>styles.css</code> file:</p>
+          <pre><code class="language-css">
+p {
+  color: red;
+  font-size: 20px;
+}
+          </code></pre>
+        </div>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li>
+            External CSS is generally preferred for larger projects as it
+            promotes separation of concerns and reusability.
+          </li>
+          <li>
+            Internal CSS can be useful for small, single-page applications.
+          </li>
+          <li>
+            Inline CSS should be used sparingly, mainly for quick testing or
+            when styles need to be applied dynamically.
+          </li>
+        </ul>
+      </section>
+      <!-- CSS SELECTORS -->
+      <section class="css-concept" id="selectors">
+        <h2>Selectors</h2>
+        <p>
+          CSS selectors are patterns used to select and style HTML elements.
+          They are the foundation of CSS, allowing you to target specific
+          elements or groups of elements for styling.
+        </p>
+        <div class="example">
+          <h3>Types of Selectors:</h3>
+          <ol>
+            <li>
+              <strong>Element Selector:</strong> Selects all elements of a
+              specific type.
+            </li>
+            <li>
+              <strong>Class Selector:</strong> Selects elements with a specific
+              class attribute.
+            </li>
+            <li>
+              <strong>ID Selector:</strong> Selects a single element with a
+              specific id attribute.
+            </li>
+          </ol>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+    /* Element Selector */
+    p {
+        color: #3498db;
+    }
+    /* This will change the color of all paragraph text to blue */
+    
+    /* Class Selector */
+    .highlight {
+        background-color: #f1c40f;
+    }
+    /* This will give a yellow background to all elements with class="highlight" */
+    
+    /* ID Selector */
+    #header {
+        font-size: 24px;
+    }
+    /* This will set the font size to 24px for the element with id="header" */
+              </code></pre>
+          <h3>Output:</h3>
+          <p style="color: #3498db">This is a paragraph with blue text.</p>
+          <p class="highlight" style="background-color: #f1c40f">
+            This is a paragraph with a yellow background.
+          </p>
+          <h4 id="header" style="font-size: 24px">
+            This is a header with 24px font size.
+          </h4>
+        </div>
+        <h3>How to Use CSS Selectors:</h3>
+        <ol>
+          <li>
+            Element Selector: Use the element name directly in your CSS. For
+            example, to style all paragraphs, use <code>p { }</code>.
+          </li>
+          <li>
+            Class Selector: Add a class to your HTML element like
+            <code>&lt;div class="highlight"&gt;</code>, then in your CSS use
+            <code>.highlight { }</code>.
+          </li>
+          <li>
+            ID Selector: Add an ID to your HTML element like
+            <code>&lt;h1 id="header"&gt;</code>, then in your CSS use
+            <code>#header { }</code>.
+          </li>
+        </ol>
+        <p>
+          You can also combine selectors for more specific targeting. For
+          example, <code>p.highlight</code> would select only paragraphs with
+          the class "highlight".
+        </p>
+      </section>
+      <!-- BASIC CSS PROPERTIES -->
+      <section class="css-concept" id="basic-css">
+        <h2>Basic CSS Properties</h2>
+        <p>
+          CSS provides a wide range of properties to style HTML elements. Here
+          are some fundamental properties that you'll use frequently:
+        </p>
+        <div class="example">
+          <h3>Common CSS Properties:</h3>
+          <ul>
+            <li><strong>color:</strong> Sets the text color</li>
+            <li>
+              <strong>background-color:</strong> Sets the background color of an
+              element
+            </li>
+            <li><strong>font-size:</strong> Specifies the size of the font</li>
+            <li>
+              <strong>font-family:</strong> Defines the font used for text
+            </li>
+            <li>
+              <strong>padding:</strong> Creates space inside an element's border
+            </li>
+            <li>
+              <strong>margin:</strong> Creates space outside an element's border
+            </li>
+            <li><strong>border:</strong> Sets the border of an element</li>
+          </ul>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+.styled-element {
+    color: #3498db;
+    background-color: #ecf0f1;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    margin: 20px;
+    border: 2px solid #2c3e50;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <div
+            style="
+              color: #3498db;
+              background-color: #ecf0f1;
+              font-size: 18px;
+              font-family: Arial, sans-serif;
+              padding: 10px;
+              margin: 20px;
+              border: 2px solid #2c3e50;
+            "
+          >
+            This is a styled element using basic CSS properties.
+          </div>
+        </div>
+        <h3>How to Use Basic CSS Properties:</h3>
+        <ol>
+          <li>Select the element you want to style using a CSS selector.</li>
+          <li>
+            Inside the declaration block, add the desired properties and their
+            values.
+          </li>
+          <li>
+            Use a semicolon (;) to separate multiple property-value pairs.
+          </li>
+          <li>Experiment with different values to achieve the desired look.</li>
+        </ol>
+        <p>
+          These basic properties form the foundation of CSS styling. As you
+          become more comfortable with them, you can explore more advanced
+          properties and techniques to create sophisticated designs.
+        </p>
+      </section>
+      <!-- BOX MODEL -->
+      <section class="css-concept" id="box-model">
+        <h2>Box Model: Margin, Padding, and Other Important Properties</h2>
+        <p>
+          The CSS Box Model is a fundamental concept that describes how elements
+          are rendered on a web page. It consists of content, padding, border,
+          and margin. Understanding these properties is crucial for controlling
+          layout and spacing in CSS.
+        </p>
+        <div class="example">
+          <h3>Key Box Model Properties:</h3>
+          <ul>
+            <li><strong>margin:</strong> Space outside the border</li>
+            <li>
+              <strong>padding:</strong> Space between the content and the border
+            </li>
+            <li><strong>border:</strong> The line around the element</li>
+            <li><strong>width:</strong> The width of the content area</li>
+            <li><strong>height:</strong> The height of the content area</li>
+          </ul>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 2px solid #3498db;
+  margin: 10px;
+  background-color: #ecf0f1;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <div class="box-model-demo">
+            <div class="box">Content</div>
+          </div>
+          <style>
+            .box-model-demo .box {
+              width: 200px;
+              height: 100px;
+              padding: 20px;
+              border: 2px solid #3498db;
+              margin: 10px;
+              background-color: #ecf0f1;
+            }
+          </style>
+        </div>
+        <h3>Detailed Explanation:</h3>
+        <ol>
+          <li>
+            <strong>Margin:</strong>
+            <ul>
+              <li>Creates space around the element, outside the border</li>
+              <li>
+                Can be set for all sides or individually (top, right, bottom,
+                left)
+              </li>
+              <li>
+                Example: <code>margin: 10px;</code> or
+                <code>margin-top: 20px;</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Padding:</strong>
+            <ul>
+              <li>Creates space between the content and the border</li>
+              <li>Can be set for all sides or individually</li>
+              <li>
+                Example: <code>padding: 15px;</code> or
+                <code>padding-left: 25px;</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Border:</strong>
+            <ul>
+              <li>Defines a border around the element</li>
+              <li>Can set width, style, and color</li>
+              <li>Example: <code>border: 1px solid black;</code></li>
+            </ul>
+          </li>
+          <li>
+            <strong>Width and Height:</strong>
+            <ul>
+              <li>Set the dimensions of the content area</li>
+              <li>Can be fixed (px) or relative (%, em)</li>
+              <li>Example: <code>width: 300px; height: 200px;</code></li>
+            </ul>
+          </li>
+        </ol>
+        <h3>Important Notes:</h3>
+        <ul>
+          <li>
+            The total width of an element = width + left padding + right padding
+            + left border + right border + left margin + right margin
+          </li>
+          <li>
+            Use <code>box-sizing: border-box;</code> to include padding and
+            border in the element's total width and height
+          </li>
+          <li>Margins can collapse between adjacent elements</li>
+          <li>Negative margins can be used to overlap elements</li>
+        </ul>
+        <p>
+          Understanding these properties allows for precise control over element
+          sizing and spacing, which is essential for creating well-structured
+          and visually appealing layouts.
+        </p>
+      </section>
+      <!-- FLEXBOX -->
+
+      <section class="css-concept" id="flexbox">
+        <h2>Flexbox</h2>
+        <p>
+          Flexbox, or the Flexible Box Layout, is a powerful CSS layout model
+          that makes it easy to design flexible responsive layout structures
+          without using floats or positioning. It's particularly useful for
+          aligning items and distributing space within a container.
+        </p>
+        <div class="example">
+          <h3>Key Flexbox Properties:</h3>
+          <ul>
+            <li>
+              <strong>display: flex;</strong> - Applied to the parent container
+              to enable flexbox
+            </li>
+            <li>
+              <strong>justify-content:</strong> - Aligns flex items along the
+              main axis
+            </li>
+            <li>
+              <strong>align-items:</strong> - Aligns flex items along the cross
+              axis
+            </li>
+          </ul>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* This creates a flex container where:
+   - Child elements become flex items
+   - Items are spaced evenly along the main axis
+   - Items are centered along the cross axis */
+          </code></pre>
+          <h3>Output:</h3>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 100px;
+              background-color: #ecf0f1;
+            "
+          >
+            <div style="background-color: #3498db; padding: 10px; color: white">
+              Item 1
+            </div>
+            <div style="background-color: #e74c3c; padding: 10px; color: white">
+              Item 2
+            </div>
+            <div style="background-color: #2ecc71; padding: 10px; color: white">
+              Item 3
+            </div>
+          </div>
+        </div>
+        <h3>How to Use Flexbox:</h3>
+        <ol>
+          <li>
+            Create a container element in your HTML (e.g.,
+            <code>&lt;div class="flex-container"&gt;</code>).
+          </li>
+          <li>
+            In your CSS, set the container to use flexbox:
+            <code>.flex-container { display: flex; }</code>
+          </li>
+          <li>
+            Adjust the layout using flexbox properties:
+            <ul>
+              <li>
+                <code>flex-direction</code>: Set the main axis (row or column)
+              </li>
+              <li>
+                <code>justify-content</code>: Align items along the main axis
+              </li>
+              <li>
+                <code>align-items</code>: Align items along the cross axis
+              </li>
+              <li>
+                <code>flex-wrap</code>: Allow items to wrap to the next line
+              </li>
+            </ul>
+          </li>
+          <li>
+            Style individual flex items using properties like
+            <code>flex-grow</code>, <code>flex-shrink</code>, and
+            <code>flex-basis</code>.
+          </li>
+        </ol>
+        <p>
+          Flexbox is particularly useful for creating responsive layouts,
+          navigation menus, and aligning content within containers.
+        </p>
+      </section>
+      <!-- CSS POSITION -->
+      <section class="css-concept" id="position">
+        <h2>CSS Position</h2>
+        <p>
+          The CSS <code>position</code> property is used to specify how an
+          element is positioned in a document. It works with the
+          <code>top</code>, <code>right</code>, <code>bottom</code>, and
+          <code>left</code> properties to determine the final location of
+          positioned elements.
+        </p>
+        <div class="example">
+          <h3>Position Values:</h3>
+          <ul>
+            <li>
+              <strong>static:</strong> The default positioning (follows normal
+              document flow)
+            </li>
+            <li>
+              <strong>relative:</strong> Positioned relative to its normal
+              position
+            </li>
+            <li>
+              <strong>absolute:</strong> Positioned relative to its nearest
+              positioned ancestor
+            </li>
+            <li>
+              <strong>fixed:</strong> Positioned relative to the browser window
+            </li>
+            <li>
+              <strong>sticky:</strong> Positioned based on the user's scroll
+              position
+            </li>
+          </ul>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+.relative-box {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  background-color: #3498db;
+}
+
+.absolute-box {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #e74c3c;
+}
+
+.fixed-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2ecc71;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <div
+            style="
+              position: relative;
+              height: 200px;
+              border: 1px solid #ccc;
+              margin-bottom: 20px;
+            "
+          >
+            <div
+              style="
+                position: relative;
+                top: 20px;
+                left: 20px;
+                background-color: #3498db;
+                padding: 10px;
+                color: white;
+              "
+            >
+              Relative Box
+            </div>
+            <div
+              style="
+                position: absolute;
+                top: 40px;
+                right: 0;
+                background-color: #e74c3c;
+                padding: 10px;
+                color: white;
+              "
+            >
+              Absolute Box
+            </div>
+          </div>
+          <!-- <div
+            style="
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background-color: #2ecc71;
+              padding: 10px;
+              color: white;
+            "
+          >
+            Fixed Box
+          </div> -->
+        </div>
+        <h3>How to Use CSS Position:</h3>
+        <ol>
+          <li>
+            Choose the appropriate <code>position</code> value for your element
+            based on how you want it to behave.
+          </li>
+          <li>
+            Use the <code>top</code>, <code>right</code>, <code>bottom</code>,
+            and <code>left</code> properties to fine-tune the element's
+            position.
+          </li>
+          <li>
+            Be mindful of the stacking context created by positioned elements,
+            especially when using <code>absolute</code> or
+            <code>fixed</code> positioning.
+          </li>
+          <li>
+            Use <code>z-index</code> to control the stacking order of
+            overlapping positioned elements.
+          </li>
+        </ol>
+        <p>
+          Understanding and effectively using CSS positioning is crucial for
+          creating complex layouts and controlling the precise placement of
+          elements on your web pages.
+        </p>
+      </section>
+      <!-- CSS FLOAT -->
+      <section class="css-concept" id="float">
+        <h2>CSS Float</h2>
+        <p>
+          The CSS <code>float</code> property is used to specify how an element
+          should float within its container. Floating elements are removed from
+          the normal flow of the document and shifted to the left or right side
+          of their containing element.
+        </p>
+        <div class="example">
+          <h3>Float Values:</h3>
+          <ul>
+            <li>
+              <code>left</code>: The element floats to the left of its container
+            </li>
+            <li>
+              <code>right</code>: The element floats to the right of its
+              container
+            </li>
+            <li><code>none</code>: The element does not float (default)</li>
+          </ul>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+.float-left {
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  background-color: #3498db;
+}
+
+.float-right {
+  float: right;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  background-color: #e74c3c;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <div style="overflow: auto">
+            <div
+              style="
+                float: left;
+                width: 200px;
+                height: 100px;
+                margin: 10px;
+                background-color: #3498db;
+              "
+            >
+              Float Left
+            </div>
+            <div
+              style="
+                float: right;
+                width: 200px;
+                height: 100px;
+                margin: 10px;
+                background-color: #e74c3c;
+              "
+            >
+              Float Right
+            </div>
+            <p style="clear: both">
+              This text comes after the floated elements.
+            </p>
+          </div>
+        </div>
+        <h3>Important Considerations:</h3>
+        <ol>
+          <li>
+            Floated elements are removed from the normal document flow, which
+            can affect the layout of surrounding elements.
+          </li>
+          <li>
+            The parent container of floated elements may collapse if it contains
+            only floated elements. This can be resolved using techniques like
+            clearing or using the <code>overflow</code> property.
+          </li>
+          <li>
+            The <code>clear</code> property can be used on subsequent elements
+            to control their behavior around floated elements.
+          </li>
+          <li>
+            While float is still used, modern layout techniques like Flexbox and
+            Grid are often preferred for more complex layouts.
+          </li>
+        </ol>
+        <p>
+          Understanding float is important for legacy code and certain layout
+          scenarios, but it's recommended to explore more modern CSS layout
+          techniques for new projects.
+        </p>
+      </section>
+      <!-- CSS LISTS -->
+      <section class="css-concept" id="lists">
+        <h2>CSS Lists</h2>
+        <p>
+          CSS provides various properties to style HTML lists (ordered,
+          unordered, and definition lists). These properties allow you to
+          control the appearance of list markers, spacing, and overall list
+          layout.
+        </p>
+        <div class="example">
+          <h3>Common List Properties:</h3>
+          <ul>
+            <li>
+              <code>list-style-type</code>: Specifies the type of list marker
+            </li>
+            <li>
+              <code>list-style-image</code>: Uses an image as the list marker
+            </li>
+            <li>
+              <code>list-style-position</code>: Sets the position of the list
+              marker
+            </li>
+            <li>
+              <code>list-style</code>: A shorthand property for setting all list
+              properties at once
+            </li>
+          </ul>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+ul {
+  list-style-type: square;
+  color: #3498db;
+}
+
+ol {
+  list-style-type: upper-roman;
+  color: #e74c3c;
+}
+
+.custom-list {
+  list-style-image: url('custom-bullet.png');
+  list-style-position: inside;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <ul style="list-style-type: square; color: #3498db">
+            <li>Unordered list item 1</li>
+            <li>Unordered list item 2</li>
+            <li>Unordered list item 3</li>
+          </ul>
+          <ol style="list-style-type: upper-roman; color: #e74c3c">
+            <li>Ordered list item 1</li>
+            <li>Ordered list item 2</li>
+            <li>Ordered list item 3</li>
+          </ol>
+        </div>
+        <h3>How to Style Lists with CSS:</h3>
+        <ol>
+          <li>
+            Select the list element (<code>ul</code> or <code>ol</code>) or
+            create a class for custom styling.
+          </li>
+          <li>
+            Use <code>list-style-type</code> to change the marker style (e.g.,
+            disc, circle, square for ul; decimal, lower-alpha, upper-roman for
+            ol).
+          </li>
+          <li>
+            Apply <code>list-style-image</code> to use a custom image as a
+            bullet point.
+          </li>
+          <li>
+            Adjust <code>list-style-position</code> to control whether the
+            marker is inside or outside the list item's content flow.
+          </li>
+          <li>
+            Use the shorthand <code>list-style</code> property to set multiple
+            list properties in one declaration.
+          </li>
+          <li>
+            Style individual <code>&lt;li&gt;</code> elements for more specific
+            control over list items.
+          </li>
+        </ol>
+        <p>
+          CSS list styling allows you to create visually appealing and
+          well-organized lists that match your website's design. Experiment with
+          different properties to achieve the desired look for your lists.
+        </p>
+      </section>
+
+      <!-- MEDIA QUERIES -->
+
+      <section class="css-concept" id="media-queries">
+        <h2>Media Queries</h2>
+        <p>
+          Media queries are a powerful CSS feature that allow you to apply
+          different styles based on the characteristics of the device or
+          browser, such as screen size, orientation, or resolution. They are
+          crucial for creating responsive designs that adapt to different
+          devices.
+        </p>
+        <div class="example">
+          <h3>How Media Queries Work:</h3>
+          <p>
+            A media query consists of a media type and one or more expressions
+            that check for specific conditions.
+          </p>
+          <h3>Example:</h3>
+          <pre><code class="language-css">
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+/* This media query applies when the screen width is 768px or less:
+   - It changes the flex-direction of .container to column
+   - This stacks the flex items vertically on smaller screens */
+          </code></pre>
+          <p>You can also combine multiple conditions:</p>
+          <pre><code class="language-css">
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+}
+/* This applies when the screen width is between 768px and 1024px */
+          </code></pre>
+          <h3>Output:</h3>
+          <p>
+            To see the effect of media queries, try resizing your browser
+            window:
+          </p>
+          <div
+            class="responsive-demo"
+            style="border: 1px solid #3498db; padding: 10px"
+          >
+            <div style="display: flex; justify-content: space-between">
+              <div
+                style="background-color: #3498db; padding: 10px; color: white"
+              >
+                Item 1
+              </div>
+              <div
+                style="background-color: #e74c3c; padding: 10px; color: white"
+              >
+                Item 2
+              </div>
+              <div
+                style="background-color: #2ecc71; padding: 10px; color: white"
+              >
+                Item 3
+              </div>
+            </div>
+          </div>
+          <style>
+            @media (max-width: 768px) {
+              .responsive-demo > div {
+                flex-direction: column;
+              }
+              .responsive-demo > div > div {
+                margin-bottom: 10px;
+              }
+            }
+          </style>
+        </div>
+        <h3>How to Use Media Queries:</h3>
+        <ol>
+          <li>
+            Determine the breakpoints for your design (e.g., mobile, tablet,
+            desktop).
+          </li>
+          <li>Write your base styles that apply to all screen sizes.</li>
+          <li>
+            Create media queries for each breakpoint, adjusting styles as
+            needed:
+            <pre><code class="language-css">
+/* Base styles */
+body { font-size: 16px; }
+
+/* Styles for screens smaller than 768px */
+@media (max-width: 768px) {
+    body { font-size: 14px; }
+    .container { flex-direction: column; }
+}
+
+/* Styles for screens between 768px and 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .sidebar { width: 30%; }
+    .main-content { width: 70%; }
+}
+            </code></pre>
+          </li>
+          <li>
+            Test your design at various screen sizes to ensure it responds
+            correctly.
+          </li>
+        </ol>
+        <p>
+          Media queries are essential for creating responsive designs that work
+          well on various devices, from mobile phones to large desktop screens.
+        </p>
+      </section>
+
+      <!-- CSS ANIMATIONS -->
+
+      <section class="css-concept" id="animations">
+        <h2>CSS Animations</h2>
+        <p>
+          CSS animations allow you to create smooth, dynamic transitions and
+          movements for elements on your web page without using JavaScript. They
+          provide a way to change CSS properties over time, creating visually
+          appealing effects.
+        </p>
+        <div class="example">
+          <h3>Basic Animation Example:</h3>
+          <pre><code class="language-css">
+@keyframes colorChange {
+  0% { background-color: red; }
+  50% { background-color: blue; }
+  100% { background-color: green; }
+}
+
+.animated-box {
+  width: 100px;
+  height: 100px;
+  animation: colorChange 4s infinite;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <div class="animated-box"></div>
+          <style>
+            @keyframes colorChange {
+              0% {
+                background-color: red;
+              }
+              50% {
+                background-color: blue;
+              }
+              100% {
+                background-color: green;
+              }
+            }
+            .animated-box {
+              width: 100px;
+              height: 100px;
+              animation: colorChange 4s infinite;
+            }
+          </style>
+        </div>
+        <h3>How to Use CSS Animations:</h3>
+        <ol>
+          <li>
+            Define the animation using <code>@keyframes</code> rule, specifying
+            the changes at different stages.
+          </li>
+          <li>
+            Apply the animation to an element using the
+            <code>animation</code> property.
+          </li>
+          <li>
+            Customize the animation with properties like duration, timing
+            function, delay, and iteration count.
+          </li>
+        </ol>
+        <p>
+          CSS animations are powerful tools for enhancing user experience and
+          adding visual interest to your web pages. They can be used for subtle
+          effects like hover transitions or more complex animations like loading
+          spinners or animated illustrations.
+        </p>
+      </section>
+
+      <!-- CSS GRID -->
+
+      <section class="css-concept" id="grid">
+        <h2>CSS Grid</h2>
+        <p>
+          CSS Grid is a powerful layout system that allows you to create
+          complex, two-dimensional layouts with rows and columns. It provides a
+          more efficient way to design grid-based user interfaces.
+        </p>
+        <div class="example">
+          <h3>Basic Grid Structure:</h3>
+          <pre><code class="language-css">
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.grid-item {
+  background-color: #3498db;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+          </code></pre>
+          <h3>Output:</h3>
+          <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+          </div>
+          <style>
+            .grid-container {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 10px;
+            }
+            .grid-item {
+              background-color: #3498db;
+              color: white;
+              padding: 20px;
+              text-align: center;
+            }
+          </style>
+        </div>
+        <h3>How to Use CSS Grid:</h3>
+        <ol>
+          <li>
+            Create a container element and set its display property to
+            <code>grid</code>.
+          </li>
+          <li>
+            Define the grid structure using properties like
+            <code>grid-template-columns</code> and
+            <code>grid-template-rows</code>.
+          </li>
+          <li>
+            Place items within the grid using properties like
+            <code>grid-column</code> and <code>grid-row</code>.
+          </li>
+          <li>Use <code>grid-gap</code> to add spacing between grid items.</li>
+          <li>
+            Utilize functions like <code>repeat()</code> and
+            <code>minmax()</code> for more flexible layouts.
+          </li>
+        </ol>
+        <p>
+          CSS Grid is excellent for creating responsive layouts, especially when
+          combined with media queries. It allows for precise control over the
+          placement and sizing of elements, making it ideal for complex page
+          layouts and component designs.
+        </p>
+      </section>
+
+      <!-- Continue with the rest of the sections, adding "How to Use" explanations for each CSS concept -->
+    </main>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #2c3e50;
+        max-width: 1100px;
+        margin: 0 auto;
+        /* padding: 20px; */
+      }
+
+      header {
+        background-color: #3498db;
+        color: #ecf0f1;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1,
+      h2 {
+        color: #2c3e50;
+      }
+
+      .css-concept {
+        background-color: #ecf0f1;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 50px;
+      }
+
+      .example {
+        background-color: #fff;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        padding: 10px;
+      }
+
+      pre {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+        border-radius: 3px;
+        padding: 10px;
+        overflow-x: auto;
+      }
+
+      code {
+        font-family: "Courier New", Courier, monospace;
+        /* color: rgb(243, 41, 41); */
+        color: green;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .language-css .comment {
+        color: #6a9955;
+      }
+      .language-css .selector {
+        color: #d7ba7d;
+      }
+      .language-css .property {
+        color: #9cdcfe;
+      }
+      .language-css .value {
+        color: #ce9178;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        .css-concept {
+          padding: 10px;
+        }
+      }
+    </style>
+  </body>
+</html>
